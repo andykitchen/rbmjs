@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script src="jquery-2.1.1.js"></script>
+    <script src="random-0.26-debug.js"></script>
+    <script src="numeric-1.2.6.js"></script>
+    <script src="app.js"></script>
+    <style>
+      canvas, button {
+        vertical-align:top;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="weights-canvas"></canvas>
+    <canvas id="output-canvas"></canvas>
+    <button class="run-button" data-iterations="1">Run 1</button>
+    <button class="run-button" data-iterations="10">Run 10</button>
+    <button class="run-button" data-iterations="100">Run 100</button>
+    <button class="run-button" data-iterations="1000">Run 1000</button>
+    <button id="clear-button">Clear</button>
+    <button id="lock-button">Lock</button><br/>
+    <button id="resample-button">Resample Visual Field</button><br/>
+    <button id="resample-hidden-button">Resample Hidden Features</button>
+  </body>
+</html>
