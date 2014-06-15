@@ -144,7 +144,7 @@ function draw(params) {
     draw_output()
   }
 
-  $('#lock-button').click(function(event) {
+  $('.lock-button').click(function(event) {
     for(var i = 0; i < visible.length; i++) {
       locked_mask[i]  = visible[i] > 0.01 ? 1 : 0
       locked_value[i] = visible[i]
@@ -153,14 +153,24 @@ function draw(params) {
     draw_output()
   })
 
-  $('#resample-button').click(function() {
+  $('.resample-button').click(function() {
     sample_v_given_h()
     draw_output()
   })
 
-  $('#resample-hidden-button').click(function() {
+  $('.resample-hidden-button').click(function() {
     sample_h_given_v()
     draw_weight_grid()
+  })
+
+  $('.noise-button').click(function() {
+    var sigma = +$(this).data('sigma') || 0.1
+
+    for(var i = 0; i < visible.length; i++) {
+      visible[i] += rng.normal(0, sigma)
+    }
+
+    draw_output()
   })
 
 
@@ -222,14 +232,13 @@ function draw(params) {
 
   draw_weight_grid()
 
-  var clear_button = document.getElementById('clear-button');
-  clear_button.onclick = function() {
+  $('.clear-button').click(function() {
     for(var i = 0; i < visible.length; i++) {
       visible[i] = 0.0
       locked_mask[i] = 0.0
     }
     draw_output()
-  }
+  })
 }
 
 $.getJSON("rbm-params-500.json", function(params) {
