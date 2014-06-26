@@ -164,10 +164,10 @@ function draw(params) {
   })
 
   $('.noise-button').click(function() {
-    var sigma = +$(this).data('sigma') || 0.1
+    var sigma = +$(this).data('p') || 0.01
 
     for(var i = 0; i < visible.length; i++) {
-      visible[i] += rng.normal(0, sigma)
+      if(rng.random() < sigma) { visible[i] = rng.random() < 0.5 ? 0 : 1 }
     }
 
     draw_output()
