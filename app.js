@@ -76,13 +76,13 @@ function draw(params) {
 
   function jiggle_flip(input) {
     for(var i = 0; i < input.length; i++) {
-      input[i] = Math.random() < 0.01 ? (1 - input[i]) : input[i]
+      input[i] = rng.random() < 0.01 ? (1 - input[i]) : input[i]
     }
   }
 
   function binomial(input) {
     for(var i = 0; i < input.length; i++) {
-      input[i] = Math.random() < input[i] ? 1 : 0
+      input[i] = rng.random() < input[i] ? 1 : 0
     }
   }
 
