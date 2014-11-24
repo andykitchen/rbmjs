@@ -1,28 +1,64 @@
 <html>
+  
   <head>
     <title>RBM Demo</title>
     <script src="jquery-2.1.1.js"></script>
     <script src="random-0.26-debug.js"></script>
     <script src="numeric-1.2.6.js"></script>
     <script src="app.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/layout.css">
+    
     <style>
       canvas, button {
-        vertical-align:top;
+        /*vertical-align:top;*/
       }
     </style>
   </head>
+
   <body>
-    <canvas id="weights-canvas"></canvas>
-    <canvas id="output-canvas"></canvas>
-    <button class="run-button" data-iterations="1">Run 1</button>
-    <button class="run-button" data-iterations="10">Run 10</button>
-    <button class="run-button" data-iterations="100">Run 100</button>
-    <button class="clear-button">Clear</button>
-    <button class="lock-button">Lock</button><br/>
-    <button class="resample-button">Resample Visual Field</button><br/>
-    <button class="resample-hidden-button">Resample Hidden Features</button>
-    <button class="noise-button" data-p="0.01">Noise 0.01</button>
-    <button class="noise-button" data-p="0.05">Noise 0.05</button>
-    <button class="noise-button" data-p="0.1">Noise 0.1</button>
+  	<div class="container">
+      <div class="sixteen columns">
+        <header>
+      		<h1>RBM Demo</h1>
+      		<h3>Interactive restricted boltzmann machines in Javascript</h3>
+      	</header>
+        <hr class="large">
+      </div>
+
+      <div class="ten columns">
+        <button class="resample-button">Resample Visual Field</button>
+        <button class="resample-hidden-button">Resample Hidden Features</button>
+        <button class="noise-button" data-p="0.01">Noise 0.01</button>
+        <button class="noise-button" data-p="0.05">Noise 0.05</button>
+        <button class="noise-button" data-p="0.1">Noise 0.1</button>
+        <canvas id="weights-canvas"></canvas>
+      </div>
+
+      <div class="six columns">
+        <button class="run-button" data-iterations="1">Run 1</button>
+        <button class="run-button" data-iterations="10">Run 10</button>
+        <button class="run-button" data-iterations="100">Run 100</button>
+        <button class="clear-button">Clear</button>
+        <button class="lock-button">Lock</button>
+        <canvas id="output-canvas"></canvas>
+      </div>
+
+      <div class="sixteen columns">
+        <p>&nbsp;</p>
+        <footer>
+          <hr>
+          <small>
+             Andy Kitchen | <a href="https://github.com/andykitchen/rbmjs" target="_blank">github.com/andykitchen/rbmjs</a>  | <a href="https://twitter.com/auastro" target="_blank">@auastro</a>
+          </small>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+        </footer>
+        
+      </div>
+
+
+    </div>
   </body>
 </html>
