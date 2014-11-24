@@ -1,20 +1,20 @@
 function draw(params) {
-  var canvas = document.getElementById('weights-canvas');
-  var context = canvas.getContext('2d');
+  var canvas = document.getElementById("weights-canvas")
+  var context = canvas.getContext("2d")
 
-  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.clearRect(0, 0, canvas.width, canvas.height)
 
-  var grid_width = 20;
-  var grid_height = 25;
+  var grid_width = 20
+  var grid_height = 25
 
-  var width = 28;
-  var height = 28;
-  var depth = 4;
+  var width = 28
+  var height = 28
+  var depth = 4
 
-  var rng = new Random(1234);
+  var rng = new Random(1234)
 
-  canvas.width = grid_width*width;
-  canvas.height = grid_height*height;
+  canvas.width = grid_width*width
+  canvas.height = grid_height*height
 
   var W = params.W
   var Wt = numeric.transpose(W)
@@ -41,7 +41,8 @@ function draw(params) {
   initialize_units()
 
   $(".run-button").click(function(event) {
-    for(var i = 0; i < $(this).data('iterations'); i++) {
+    var n = $(this).data("iterations")
+    for(var i = 0; i < n; i++) {
       sample_h_given_v()      
       sample_v_given_h()
     }
@@ -100,7 +101,7 @@ function draw(params) {
     }
   }
 
-  var output = document.getElementById('output-canvas');
+  var output = document.getElementById("output-canvas")
   output.width = 10*width
   output.height = 10*height
   var dragging = false
@@ -144,7 +145,7 @@ function draw(params) {
     draw_output()
   }
 
-  $('.lock-button').click(function(event) {
+  $(".lock-button").click(function(event) {
     for(var i = 0; i < visible.length; i++) {
       locked_mask[i]  = visible[i] > 0.01 ? 1 : 0
       locked_value[i] = visible[i]
@@ -153,18 +154,18 @@ function draw(params) {
     draw_output()
   })
 
-  $('.resample-button').click(function() {
+  $(".resample-button").click(function() {
     sample_v_given_h()
     draw_output()
   })
 
-  $('.resample-hidden-button').click(function() {
+  $(".resample-hidden-button").click(function() {
     sample_h_given_v()
     draw_weight_grid()
   })
 
-  $('.noise-button').click(function() {
-    var sigma = +$(this).data('p') || 0.01
+  $(".noise-button").click(function() {
+    var sigma = +$(this).data("p") || 0.01
 
     for(var i = 0; i < visible.length; i++) {
       if(rng.random() < sigma) { visible[i] = rng.random() < 0.5 ? 0 : 1 }
@@ -176,13 +177,13 @@ function draw(params) {
 
   function draw_output() {
     var canvas = output
-    var context = canvas.getContext('2d');
+    var context = canvas.getContext("2d")
 
-    var backing = document.createElement('canvas');
+    var backing = document.createElement("canvas")
     backing.width = width
     backing.height = height
 
-    var backing_context = backing.getContext('2d');
+    var backing_context = backing.getContext("2d")
 
     var img = numeric.mul(visible, 255)
     var locked_img = numeric.mul(locked_value, 255)
@@ -218,21 +219,21 @@ function draw(params) {
       }
     }    
 
-    context.putImageData(px, x, y);
+    context.putImageData(px, x, y)
   }
 
   function draw_weight_grid() {
     for(var i = 0; i < grid_width; i++) {
       for(var j = 0; j < grid_height; j++) {
         var k = i*grid_height + j
-        draw_weights(context, numeric.dot(numeric.add(Wt[k], 1), hidden[k] * 100 + 100), i*width, j*height);
+        draw_weights(context, numeric.dot(numeric.add(Wt[k], 1), hidden[k] * 100 + 100), i*width, j*height)
       }
     }
   }
 
   draw_weight_grid()
 
-  $('.clear-button').click(function() {
+  $(".clear-button").click(function() {
     for(var i = 0; i < visible.length; i++) {
       visible[i] = 0.0
       locked_mask[i] = 0.0
