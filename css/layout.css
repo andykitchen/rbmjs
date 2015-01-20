@@ -29,7 +29,6 @@ header, footer{
 }
 
 .six.columns{
-	background: url('../img/draw_here.png') no-repeat bottom center;
 	background-size: 192px 79px;
 	padding-bottom: 82px;
 }
